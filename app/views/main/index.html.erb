@@ -1,9 +1,15 @@
 <% content_for :login_right do %>
 
+<% if flash[:errors] %>
+    <% flash[:errors].each do |msg| %>
+    <h4 style='color:red; text-transform:capitalize;'><%= msg %></h4>
+    <% end %>
+<% end %>
+
 <form action='/login' method='post'>
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-<p>Email: <input type='text'></p>
-<p>Password: <input type='text'></p>
+<p>Email: <input type='text' name='email'></p>
+<p>Password: <input type='text' name='password'></p>
 <input type='submit' value='Login'>
 </form>
 <% end %> 
@@ -19,7 +25,7 @@
 <form action='/proccess' method='post'>
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 <p>First Name: <input type='text' name=form[first_name]></p>
-<p>Last Name: <input type='text' name=form[last_name]></p>
+<p>Alias: <input type='text' name=form[last_name]></p>
 <p>Email: <input type='text' name=form[email]></p>
 <p>Password: <input type='text' name=form[password]></p>
 <p>Confirm PW: <input type='text' name=form[password_confirmation]></p>

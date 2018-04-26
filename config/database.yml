@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: Beltreviewr_production
-  username: Beltreviewr
+  username: ubuntu
   password: <%= ENV['BELTREVIEWR_DATABASE_PASSWORD'] %>

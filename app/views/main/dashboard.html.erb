@@ -1,2 +1,20 @@
-<h1>Main#dashboard</h1>
-<p>Find me in app/views/main/dashboard.html.erb</p>
+<form action='/idea' method='post'>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type='text' name='idea' placeholder='Post idea here'>
+    <input type='submit' value='Idea!'>
+</form>
+
+<% @all.each do |ideaz| %>
+<br>
+<p><a href='/user/<%= ideaz.user_id %>'> <%= ideaz.user.last_name %></a> Says :<%=ideaz.content%></p>
+    <% if !ideaz.users_liked_ids.include? session[:user_id] %>
+        <a href='/like/<%=ideaz.id%>'>Like</a> 
+    <% else %>
+        like 
+    <% end %>
+            ||||| <a href='/idea/<%=ideaz.id%>'><%= ideaz.likes.length%> </a><--that many likes
+<br>
+<% if ideaz.user_id == session[:user_id] %>
+    <a href="/idea/destroy/<%=ideaz.id%>" data-method='delete'>Delete</a>
+<% end %>
+<% end %>

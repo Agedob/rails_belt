@@ -1,2 +1,16 @@
-<h1>Main#edit</h1>
-<p>Find me in app/views/main/edit.html.erb</p>
+<p><%= @idea.user.last_name %> says: <%= @idea.content %></p>
+<h5>People who liked this post:</h5>
+<table>
+    <tr>
+        <th>Alias</th>
+        <th>Name</th>
+    </tr>
+    <% @all.each do |x| %>
+    <tr>
+        <td><a href='/user/<%= x.id %>'><%= x.last_name %></a></td>
+        <td><%= x.first_name %></td>
+    </tr>
+    <% end %>
+</table>
+
+<a href='/main/dashboard/'> home </a>

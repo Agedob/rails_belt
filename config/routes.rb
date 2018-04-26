@@ -17,7 +17,17 @@ Rails.application.routes.draw do
 
   post 'login' => 'sessions#login'
 
+  post 'idea' => 'main#addidea'
+
   delete 'sessions/:id' => 'sessions#destroy'
+
+  get 'user/:id' => 'main#single'
+
+  get 'idea/:id' => 'main#edit'
+
+  get 'like/:id' => 'main#likedby'
+
+  delete 'idea/destroy/:id' => 'main#delidea'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

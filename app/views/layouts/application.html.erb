@@ -8,18 +8,14 @@
 </head>
 <body>
 
-<% if flash[:error] %>
-    <% flash[:error].each do |msg| %>
-    <h4 style='color:red; text-transform:capitalize;'><%= msg %></h4>
-    <% end %>
-<% end %>
-
 <% if current_user %>
+<h1>Hello, <%=current_user.last_name%></h1>
   <form action="/sessions/<%=current_user.id%>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Log Out">
   </form>
+  <br>
 <% end %> 
 <%= yield %>
 </body>

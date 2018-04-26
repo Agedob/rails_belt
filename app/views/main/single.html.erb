@@ -1,2 +1,10 @@
-<h1>Main#single</h1>
-<p>Find me in app/views/main/single.html.erb</p>
+<p>Name: <%= @user.first_name%> </p>
+<p>Alias: <%= @user.last_name%> </p>
+<p>Email: <%= @user.email%> </p>
+
+<hr>
+
+<p> Total Number of Posts: <%= @user.ideas.length %> </p>
+<p> Total Number of Likes: <%= @user.likes.length %> </p>
+
+<a href='/main/dashboard'> Home </a>

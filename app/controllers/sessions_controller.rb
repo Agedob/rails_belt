@@ -15,11 +15,13 @@ class SessionsController < ApplicationController
 
   def login
       # Log User In
+        @error = ['invalid login', 'please try again']
       if !(User.find_by_email(params[:email]).try(:authenticate, params[:password])).nil?
         session[:user_id] = User.find_by(email: params[:email]).id
         puts session[:user_id]
         redirect_to '/main/dashboard'
       else
+        flash[:errors] = @error
         redirect_to '/'
       end
         # if 
@@ -30,7 +32,7 @@ class SessionsController < ApplicationController
           # redirect to login page
   end
   def destroy
-    reset_session
+    session[:user_id] = nil
     redirect_to '/'
   end
 
