@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rails belt</title>
+    <%= stylesheet_link_tag "application", media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <%= yield :registration_left %>
+            </div>
+            <div class="col-md-6">
+                <%= yield :login_right %>
+            </div>
+        </div>
+    </div>
+
+    <%= yield %>
+    
+</body>
+</html>
